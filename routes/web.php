@@ -20,3 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/contatos', [App\Http\Controllers\AgendaContatosController::class, 'index'])->name('contatos.index');
+Route::get('/contatos-criar', [App\Http\Controllers\AgendaContatosController::class, 'create'])->name('contatos.create');
