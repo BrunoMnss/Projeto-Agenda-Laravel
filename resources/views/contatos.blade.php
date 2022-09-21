@@ -16,6 +16,7 @@
                                 <th>Sobrenome</th>
                                 <th>Telefone</th>
                                 <th>E-mail</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,6 +27,10 @@
                                 <td>{{$contato->sobrenome}}</td>
                                 <td>{{$contato->telefone}}</td>
                                 <td>{{$contato->email}}</td>
+                                <td>
+                                <a type="button" href="{{ route('contatos.edit', $contato->id) }}" class="btn btn-outline-secondary">Editar</a> 
+                                <a type="button" href="{{ route('contatos.delete', $contato->id) }}" class="btn btn-outline-danger">Deletar</a> 
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

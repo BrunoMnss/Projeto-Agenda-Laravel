@@ -23,3 +23,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/contatos', [App\Http\Controllers\AgendaContatosController::class, 'index'])->name('contatos.index');
 Route::get('/contatos-criar', [App\Http\Controllers\AgendaContatosController::class, 'create'])->name('contatos.create');
 Route::post('/contatos-criar', [App\Http\Controllers\AgendaContatosController::class, 'store'])->name('contatos.store');
+Route::get('/contatos-editar/{id}', [App\Http\Controllers\AgendaContatosController::class, 'edit'])->name('contatos.edit');
+Route::put('/contatos-editar/{id}', [App\Http\Controllers\AgendaContatosController::class, 'update'])->name('contatos.update');
+Route::get('/contatos-deletar/{id}', [App\Http\Controllers\AgendaContatosController::class, 'delete'])->name('contatos.delete');

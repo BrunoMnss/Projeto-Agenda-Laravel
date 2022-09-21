@@ -20,6 +20,15 @@ class AgendaContatos extends Model
         return $this->create($data);
     }
     public function getAll(){
-        return $this->select('nome','sobrenome','telefone','email')->where('user_id', auth()->user()->id)->get();
+        return $this->select('id','nome','sobrenome','telefone','email')->where('user_id', auth()->user()->id)->get();
+    }
+    public function getContatoById($id){
+        return $this->select('id','nome','sobrenome','telefone','email')->where('user_id', auth()->user()->id)->where('id', $id)->first();
+    }
+    public function updateById($id,$data){
+        return $this->where('id', $id)->update($data);
+    }
+    public function deleteById($id){
+        return $this->where('id', $id)->delete();
     }
 }
