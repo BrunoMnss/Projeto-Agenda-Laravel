@@ -17,28 +17,44 @@ class AdicionarContato extends FormRequest
     }
 
     /**
+     * Prepara os campos antes de criar as regras
+     */
+    public function prepareForValidation()
+    {
+        /**
+         * Adiciona o user_id no request
+         */
+        $data = [
+            'user_id' => auth()->user()->id
+        ];
+
+        return $this->request->add($data);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
+
     public function rules()
     {
+        
         return [
-            'nome' => ['required','max:190'],
-            'sobrenome' => ['required','max:190'],
+            'user_id' => ['required'],
+            'nome' => ['required', 'max:190'],
+            'sobrenome' => ['required', 'max:190'],
             'telefone' => ['max:20'],
-            'email' => ['required','max:190', 'email']
+            'email' => ['required', 'max:190', 'email']
         ];
     }
 
     public function messages()
     {
         return [
-            'modelo_id.required' => 'O modelo é obrigatório',
-            'data_comprovante.required' => 'A data do comprovante é obrigatória',
-            'data_comprovante.date_format' => 'Formato da data do comprovante inválida',
-            'hora_comprovante.date_format' => 'Formato da hora do comprovante inválida',
-            'hora_comprovante.required' => 'A hora do comprovante é obrigatória',
+            'nome.required' => 'O nome é obrigatório',
+            'sobrenome.required' => 'O sobrenome é obrigatório',
+            'email.required' => 'O email é obrigatório',
         ];
     }
 }

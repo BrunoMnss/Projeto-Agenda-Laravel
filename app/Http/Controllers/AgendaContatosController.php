@@ -28,6 +28,6 @@ class AgendaContatosController extends Controller
 
     protected function store(AdicionarContato $request)
     {
-        
+        dd($request->all());
     }
 }
