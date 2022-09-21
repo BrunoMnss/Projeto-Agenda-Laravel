@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                <button type="button" href="{{ route('contatos.create') }}" class="btn btn-outline-secondary">Adicionar</button>
+                <a type="button" href="{{ route('contatos.create') }}" class="btn btn-outline-secondary">Adicionar</a>
                     <table id="example" class="display" style="width:100%">
                         <thead>
                             <tr>
