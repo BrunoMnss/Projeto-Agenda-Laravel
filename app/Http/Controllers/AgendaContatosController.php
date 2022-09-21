@@ -18,7 +18,8 @@ class AgendaContatosController extends Controller
 
     protected function index(Request $request)
     {
-        return view('contatos');
+        $data=$this->agendaContatos->getAll();
+        return view('contatos', compact('data'));
     }
 
     protected function create(Request $request)
@@ -28,6 +29,10 @@ class AgendaContatosController extends Controller
 
     protected function store(AdicionarContato $request)
     {
-        dd($request->all());
+        $created=$this->agendaContatos->store($request->validated());
+        if(empty($created)){
+            return redirect()->back();
+        }
+        return redirect()->route('contatos.index');
     }
 }

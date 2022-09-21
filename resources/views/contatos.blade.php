@@ -19,12 +19,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($data as $key=>$contato)
+                            
                             <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
+                                <td>{{$contato->nome}}</td>
+                                <td>{{$contato->sobrenome}}</td>
+                                <td>{{$contato->telefone}}</td>
+                                <td>{{$contato->email}}</td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

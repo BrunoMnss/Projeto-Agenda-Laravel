@@ -16,4 +16,10 @@ class AgendaContatos extends Model
         'telefone',
         'email'
     ];
+    public function store($data){
+        return $this->create($data);
+    }
+    public function getAll(){
+        return $this->select('nome','sobrenome','telefone','email')->where('user_id', auth()->user()->id)->get();
+    }
 }
