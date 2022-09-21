@@ -29,13 +29,15 @@
                     </table>
                     <form method="POST" action="{{ route('contatos.sendEmail') }}">
                         @csrf
-                        @dump($errors->any())
                         <input type="hidden" value="{{$contato->id}}" name="contato_id">
                         <input type="hidden" value="{{$contato->email}}" name="email">
-                        <textarea class="form-control mt-3">
-
-                    </textarea>
-                        <button type="submit" href="{{ route('contatos.sendEmail') }}" class="btn btn-outline-secondary mt-3" >Enviar E-mail.</button>
+                        <textarea class="form-control mt-3" required maxlength="500" name="mensagem"></textarea>
+                        @error('mensagem')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <button type="submit" href="{{ route('contatos.sendEmail') }}" class="btn btn-outline-secondary mt-3">Enviar E-mail.</button>
                     </form>
                 </div>
             </div>
