@@ -26,3 +26,5 @@ Route::post('/contatos-criar', [App\Http\Controllers\AgendaContatosController::c
 Route::get('/contatos-editar/{id}', [App\Http\Controllers\AgendaContatosController::class, 'edit'])->name('contatos.edit');
 Route::put('/contatos-editar/{id}', [App\Http\Controllers\AgendaContatosController::class, 'update'])->name('contatos.update');
 Route::get('/contatos-deletar/{id}', [App\Http\Controllers\AgendaContatosController::class, 'delete'])->name('contatos.delete');
+Route::post('/contatos-email', [App\Http\Controllers\AgendaContatosController::class, 'sendEmail'])->name('contatos.sendEmail');
+Route::get('/contatos-email/{id}', [App\Http\Controllers\AgendaContatosController::class, 'showSendEmail'])->name('contatos.showSendEmail');

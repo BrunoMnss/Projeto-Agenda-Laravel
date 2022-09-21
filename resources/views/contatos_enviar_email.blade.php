@@ -8,7 +8,6 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                <a type="button" href="{{ route('contatos.create') }}" class="btn btn-outline-secondary">Adicionar</a>
                     <table id="example" class="display" style="width:100%">
                         <thead>
                             <tr>
@@ -16,36 +15,31 @@
                                 <th>Sobrenome</th>
                                 <th>Telefone</th>
                                 <th>E-mail</th>
-                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($data as $key=>$contato)
-                            
+
                             <tr>
                                 <td>{{$contato->nome}}</td>
                                 <td>{{$contato->sobrenome}}</td>
                                 <td>{{$contato->telefone}}</td>
                                 <td>{{$contato->email}}</td>
-                                <td>
-                                <a type="button" href="{{ route('contatos.edit', $contato->id) }}" class="btn btn-outline-secondary">Editar</a> 
-                                <a type="button" href="{{ route('contatos.delete', $contato->id) }}" class="btn btn-outline-danger">Deletar</a> 
-                                <a type="button" href="{{ route('contatos.showSendEmail', $contato->id) }}" class="btn btn-outline-secondary">Enviar E-mail</a>  
-                                </td>
                             </tr>
-                            @endforeach
                         </tbody>
                     </table>
+                    <form method="POST" action="{{ route('contatos.sendEmail') }}">
+                        @csrf
+                        @dump($errors->any())
+                        <input type="hidden" value="{{$contato->id}}" name="contato_id">
+                        <input type="hidden" value="{{$contato->email}}" name="email">
+                        <textarea class="form-control mt-3">
+
+                    </textarea>
+                        <button type="submit" href="{{ route('contatos.sendEmail') }}" class="btn btn-outline-secondary mt-3" >Enviar E-mail.</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script>
 @endsection

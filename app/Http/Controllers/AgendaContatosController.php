@@ -4,17 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AdicionarContato;
 use App\Http\Requests\EditarContato;
+use App\Http\Requests\EnviarEmail;
 use App\Models\AgendaContatos;
+use App\Models\Emails;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class AgendaContatosController extends Controller
 {
     protected $agendaContatos;
+    protected $emails;
 
-    public function __construct(AgendaContatos $agendaContatos)
+    public function __construct(AgendaContatos $agendaContatos, Emails $emails)
     {
         $this->middleware('auth');
         $this->agendaContatos = $agendaContatos;
+        $this->emails = $emails;
     }
 
     protected function index(Request $request)
@@ -51,5 +56,16 @@ class AgendaContatosController extends Controller
     {
         $contato=$this->agendaContatos->deleteById($id);
         return redirect()->route('contatos.index');
+    }
+    protected function sendEmail(EnviarEmail $request)
+    {
+        dd($request->Validated());
+        $contato=$this->agendaContatos->sendEmail();
+        return redirect()->route('contatos.index');
+    }
+    protected function showSendEmail(Request $request, $id)
+    {
+        $contato=$this->agendaContatos->getContatoById($id);
+        return view('contatos_enviar_email', compact('contato'));
     }
 }
