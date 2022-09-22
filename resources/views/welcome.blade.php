@@ -427,7 +427,6 @@
             @guest
     <x-login />
             @endguest
-
         </div>
     </div>
 </body>
