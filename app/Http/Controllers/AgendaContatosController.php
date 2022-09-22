@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AdicionarContato;
 use App\Http\Requests\EditarContato;
 use App\Http\Requests\EnviarEmail;
+use App\Mail\SendEmailContato;
 use App\Models\AgendaContatos;
 use App\Models\Emails;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AgendaContatosController extends Controller
 {
@@ -59,8 +61,8 @@ class AgendaContatosController extends Controller
     }
     protected function sendEmail(EnviarEmail $request)
     {
-        dd($request->Validated());
-        $contato=$this->agendaContatos->sendEmail();
+        Mail::to($request->input('email'))->send(new SendEmailContato($request->input('mensagem')));
+        $contato=$this->emails->sendEmail($request->validated());
         return redirect()->route('contatos.index');
     }
     protected function showSendEmail(Request $request, $id)

@@ -14,6 +14,10 @@ class Emails extends Model
         'contato_id',
         'email',
         'mensagem',
-    ];
+    ]; 
+
+    public function sendemail($data){
+        return $this->create($data);
+    }
     
 }
