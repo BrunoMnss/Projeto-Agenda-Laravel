@@ -424,7 +424,9 @@
             <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                 <img src="{{ asset('img/logo.png')}}">
             </div>
-    </x-login>
+            @guest
+    <x-login />
+            @endguest
 
         </div>
     </div>
