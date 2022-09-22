@@ -432,3 +432,7 @@
 </body>
 
 </html>
+@section('scripts')
+
+
+@endsection
