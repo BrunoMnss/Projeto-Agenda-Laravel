@@ -2,10 +2,14 @@ body {
 	background-color: rgb(250 250 250);
 }
 
-.lilas {
-	color: blue;
+.branco {
+	color: white;
 }
 
 .bg-cinza {	
-	background-color: slategrey;
+	background-color: rgb(107 114 128);
+}
+
+.bg-cinza-400 {	
+	background-color: rgb(156 163 175);
 }
