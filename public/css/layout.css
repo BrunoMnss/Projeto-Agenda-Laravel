@@ -13,3 +13,8 @@ body {
 .bg-cinza-400 {	
 	background-color: rgb(156 163 175);
 }
+
+.toast-top-center {
+    top: 12px;
+ 	margin: auto;
+}

@@ -37,7 +37,7 @@
     <div class="row justify-content-center">
         <div class="col-md-2 mt-4">
             <a type="button" class="btn btn-secondary" href="{{ route('contatos.index')}}">
-            <i class="fa-2x fa-regular fa-address-book align-middle"></i> Meus Contatos
+                <i class="fa-2x fa-regular fa-address-book align-middle"></i> Meus Contatos
             </a>
         </div>
     </div>

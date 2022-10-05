@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -40,6 +41,20 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+
+    public function postRegister(Request $request)
+ {
+    $validator = $this->registrar->validator($request->all());
+    if ($validator->fails())
+    {
+        $this->throwValidationException(
+            $request, $validator
+        );
+    }
+    $this->auth->login($this->registrar->create($request->all()));     
+    // Now you can redirect!
+    return redirect()->route('welcome')->with('sucess', 'Registrado com Sucesso');
+ }
 
     /**
      * Get a validator for an incoming registration request.

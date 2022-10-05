@@ -19,8 +19,10 @@
     <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
 
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
     <link href="{{ asset('css/layout.css')}}" rel="stylesheet">
 </head>
 
@@ -45,7 +47,7 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                        
+
 
                         @if (Route::has('register'))
                         <li class="nav-item">
@@ -58,7 +60,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <i class="fa-solid fa-house-user"></i> {{ ucfirst(Auth::user()->name) }}
+                                <i class="fa-solid fa-house-user"></i> {{ ucfirst(Auth::user()->name) }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -72,7 +74,7 @@
                             </div>
                         </li>
                         @endguest
-                        
+
                     </ul>
                 </div>
             </div>
@@ -84,6 +86,25 @@
     </div>
     <script type="text/javascript" src="{{ asset('./js/jquery.min.js') }}"> </script>
     <script type="text/javascript" src="{{ asset('./js/datatables.min.js') }}"> </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-BR.json"> </script>
+    <script type="text/javascript">
+        toastr.options = {
+            positionClass: 'toast-top-center'
+        };
+    @if (session('success'))
+    toastr.success('{{session('success')}}', '')
+    @endif
+    @if (session('error'))
+    toastr.error('{{session('error')}}', '')
+    @endif
+    @if (session('info'))
+    toastr.info('{{session('info')}}', 'ATENÇÃO')
+    @endif
+    @if (session('warning'))
+    toastr.warning('{{session('warning')}}', 'ATENÇÃO')
+    @endif
+    </script>
     @yield('scripts')
 </body>
 
