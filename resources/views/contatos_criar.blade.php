@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <img src="{{ asset('img/Logo.png')}}" class="col-md-4  offset-md-4 mb-5">
             <div class="card">
-                <div class="card-header">{{ __('Adicionar novo Contato') }}</div>
+                <div class="card-header">{{ __('Adicionar novo contato') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('contatos.store') }}">
@@ -48,7 +48,7 @@
                             </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="submit" class="btn btn-secondary">Salvar</button>
                     </form>
                 </div>
             </div>
